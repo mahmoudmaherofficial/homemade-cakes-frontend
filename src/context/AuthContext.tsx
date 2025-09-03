@@ -1,8 +1,9 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { AuthContextType, LoginResponse, RegisterResponse, User } from "@/types/types";
+import cAxios from "@/lib/axios/cAxios";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -13,7 +14,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/me", { withCredentials: true });
+        const res = await cAxios.get("/auth/me");
         setUser(res.data);
       } catch {
         setUser(null);
@@ -27,9 +28,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   // ================== login ==================
   const login = async (values: { phone: string; password: string }): Promise<LoginResponse> => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", values, {
-        withCredentials: true,
-      });
+      const res = await cAxios.post("/auth/login", values);
       setUser(res.data);
       return { success: true, data: res.data };
     } catch (error) {
@@ -49,9 +48,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     password: string;
   }): Promise<RegisterResponse> => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", values, {
-        withCredentials: true,
-      });
+      const res = await cAxios.post("/auth/register", values);
       setUser(res.data);
       return { success: true, data: res.data };
     } catch (error) {
@@ -65,7 +62,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   // ================== logout ==================
   const logout = async () => {
-    await axios.post("http://localhost:5000/api/auth/logout", {}, { withCredentials: true });
+    await cAxios.post("/auth/logout");
     setUser(null);
   };
 

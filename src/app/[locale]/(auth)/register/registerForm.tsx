@@ -1,12 +1,12 @@
 "use client";
 import { useFormik } from "formik";
-import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
+import FormError from "@/components/ui/FormError";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,10 +27,10 @@ const RegisterForm = () => {
 
   // Validation schema
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required(t("usernameRequired")),
-    phone: Yup.string().matches(phoneRegex, t("phoneInvalid")).required(t("phoneRequired")),
-    email: Yup.string().email(t("emailInvalid")).required(t("emailRequired")),
-    password: Yup.string().min(8, t("passwordMin")).required(t("passwordRequired")),
+    name: Yup.string().required(t("validation.usernameRequired")),
+    phone: Yup.string().matches(phoneRegex, t("validation.phoneInvalid")).required(t("validation.phoneRequired")),
+    email: Yup.string().email(t("validation.emailInvalid")).required(t("validation.emailRequired")),
+    password: Yup.string().min(8, t("validation.passwordMin")).required(t("validation.passwordRequired")),
   });
 
   // Submit function
@@ -67,7 +67,7 @@ const RegisterForm = () => {
           <svg
             fill="none"
             viewBox="0 0 24 24"
-            className={`absolute ${t("icon")} w-4 h-4 text-muted-foreground pointer-events-none`}>
+            className={`absolute ${t("icons.name")} w-4 h-4 text-muted-foreground pointer-events-none`}>
             <circle strokeWidth="1.5" stroke="currentColor" r="4" cy="8" cx="12"></circle>
             <path
               strokeLinecap="round"
@@ -77,7 +77,7 @@ const RegisterForm = () => {
           </svg>
           <input
             required
-            placeholder={t("usernamePlaceholder")}
+            placeholder={t("placeholders.name")}
             className="w-full h-10 px-9 text-sm border rounded-lg bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:bg-background focus:ring-4 focus:ring-ring transition"
             type="text"
             name="name"
@@ -86,17 +86,7 @@ const RegisterForm = () => {
             onBlur={formik.handleBlur}
           />
         </div>
-        {formik.touched.name && formik.errors.name && (
-          <AnimatePresence>
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="text-error mt-2 text-sm tracking-wider">
-              {formik.errors.name}
-            </motion.p>
-          </AnimatePresence>
-        )}
+        {formik.touched.name && formik.errors.name && <FormError error={formik.errors.name} />}
       </div>
 
       {/* Phone */}
@@ -105,7 +95,7 @@ const RegisterForm = () => {
           <svg
             fill="none"
             viewBox="0 0 24 24"
-            className={`absolute ${t("icon")} w-4 h-4 text-muted-foreground pointer-events-none`}>
+            className={`absolute ${t("icons.phone")} w-4 h-4 text-muted-foreground pointer-events-none`}>
             <path
               stroke="currentColor"
               strokeWidth="1.5"
@@ -116,7 +106,7 @@ const RegisterForm = () => {
           </svg>
           <input
             required
-            placeholder={t("phonePlaceholder")}
+            placeholder={t("placeholders.phone")}
             className="w-full h-10 px-9 text-sm border rounded-lg bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:bg-background focus:ring-4 focus:ring-ring transition"
             type="text"
             name="phone"
@@ -125,17 +115,7 @@ const RegisterForm = () => {
             onBlur={formik.handleBlur}
           />
         </div>
-        {formik.touched.phone && formik.errors.phone && (
-          <AnimatePresence>
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="text-error mt-2 text-sm tracking-wider">
-              {formik.errors.phone}
-            </motion.p>
-          </AnimatePresence>
-        )}
+        {formik.touched.phone && formik.errors.phone && <FormError error={formik.errors.phone} />}
       </div>
 
       {/* Email */}
@@ -144,7 +124,7 @@ const RegisterForm = () => {
           <svg
             fill="none"
             viewBox="0 0 24 24"
-            className={`absolute ${t("icon")} w-4 h-4 text-muted-foreground pointer-events-none`}>
+            className={`absolute ${t("icons.email")} w-4 h-4 text-muted-foreground pointer-events-none`}>
             <path
               stroke="currentColor"
               strokeWidth="1.5"
@@ -155,7 +135,7 @@ const RegisterForm = () => {
           </svg>
           <input
             required
-            placeholder={t("emailPlaceholder")}
+            placeholder={t("placeholders.email")}
             className="w-full h-10 px-9 text-sm border rounded-lg bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:bg-background focus:ring-4 focus:ring-ring transition"
             type="email"
             name="email"
@@ -164,17 +144,7 @@ const RegisterForm = () => {
             onBlur={formik.handleBlur}
           />
         </div>
-        {formik.touched.email && formik.errors.email && (
-          <AnimatePresence>
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="text-error mt-2 text-sm tracking-wider">
-              {formik.errors.email}
-            </motion.p>
-          </AnimatePresence>
-        )}
+        {formik.touched.email && formik.errors.email && <FormError error={formik.errors.email} />}
       </div>
 
       {/* Password */}
@@ -182,7 +152,7 @@ const RegisterForm = () => {
         <div className="relative flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`absolute ${t("icon")} w-4 h-4 text-muted-foreground pointer-events-none`}
+            className={`absolute ${t("icons.password")} w-4 h-4 text-muted-foreground pointer-events-none`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -195,7 +165,7 @@ const RegisterForm = () => {
           </svg>
           <input
             required
-            placeholder={t("passwordPlaceholder")}
+            placeholder={t("placeholders.password")}
             className="w-full h-10 px-9 pr-10 text-sm border rounded-lg bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:bg-background focus:ring-4 focus:ring-ring transition"
             type={showPassword ? "text" : "password"}
             name="password"
@@ -206,7 +176,7 @@ const RegisterForm = () => {
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className={`absolute ${t("showPasswordIcon")} p-1 text-muted-foreground hover:text-primary transition`}>
+            className={`absolute ${t("icons.showPassword")} p-1 text-muted-foreground hover:text-primary transition`}>
             {showPassword ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -239,32 +209,22 @@ const RegisterForm = () => {
             )}
           </button>
         </div>
-        {formik.touched.password && formik.errors.password && (
-          <AnimatePresence>
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="text-error mt-2 text-sm tracking-wider">
-              {formik.errors.password}
-            </motion.p>
-          </AnimatePresence>
-        )}
+        {formik.touched.password && formik.errors.password && <FormError error={formik.errors.password} />}
       </div>
 
       {/* Submit */}
       <button
         className="relative w-full h-10 mt-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition transform hover:-translate-y-[1px] shadow-md hover:shadow-lg overflow-hidden"
         type="submit">
-        <span>{t("registerButton")}</span>
+        <span>{t("buttons.register")}</span>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
       </button>
 
       {/* Footer */}
       <div className="mt-4 text-center text-xs text-muted-foreground">
-        {t("haveAccount")}{" "}
-        <Link href={t("loginHref")} className="text-primary font-medium hover:text-primary/90">
-          {t("loginLabel")}
+        {t("buttons.haveAccount")}{" "}
+        <Link href={t("buttons.loginHref")} className="text-primary font-medium hover:text-primary/90">
+          {t("buttons.loginLabel")}
         </Link>
       </div>
     </form>

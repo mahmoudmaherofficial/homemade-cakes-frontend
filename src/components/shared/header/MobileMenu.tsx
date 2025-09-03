@@ -6,10 +6,12 @@ import ChangeLangBtn from "@/components/changeLangBtn";
 import { NavLink } from "@/types/types";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/AuthContext";
 
 const MobileMenu = ({ setIsOpen }: { setIsOpen: (value: boolean) => void }) => {
-  const t = useTranslations();
-  const navLinks = t.raw("header.navLinks");
+  const t = useTranslations("header");
+  const navLinks = t.raw("navLinks");
+  const { isAuthenticated, loading, logout } = useAuth();
 
   return (
     <motion.div
@@ -29,18 +31,29 @@ const MobileMenu = ({ setIsOpen }: { setIsOpen: (value: boolean) => void }) => {
           </li>
         ))}
         <div className="flex items-center gap-2 *:flex-1 border-t border-border pt-3">
-          <p>{t("header.changeMode")}</p>
-          <p>{t("header.changeLang")}</p>
+          <p>{t("changeMode")}</p>
+          <p>{t("changeLang")}</p>
         </div>
         <div className="flex items-center gap-2 *:flex-1">
           <ModeToggle />
           <ChangeLangBtn />
         </div>
-        <Link href={t("header.loginBtn.href")} onClick={() => setIsOpen(false)}>
-          <Button className="w-full mt-2" variant={"secondary"}>
-            {t("header.loginBtn.label")}
+        {!isAuthenticated && !loading ? (
+          <Link href={t("buttons.login.href")}>
+            <Button className="w-full" onClick={() => setIsOpen(false)} variant={"secondary"}>
+              {t("buttons.login.label")}
+            </Button>
+          </Link>
+        ) : (
+          <Button
+            variant={"outline"}
+            onClick={() => {
+              logout();
+              setIsOpen(false);
+            }}>
+            {t("buttons.logout.label")}
           </Button>
-        </Link>
+        )}
       </ul>
     </motion.div>
   );

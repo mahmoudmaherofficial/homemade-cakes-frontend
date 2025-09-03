@@ -24,7 +24,7 @@ export default function HomePage() {
             </h1>
             <p className="text-lg text-muted-foreground">{t("description")}</p>
             <Button size={"lg"} className="rounded-full text-xl py-6 cursor-pointer">
-              {t("orderNow")}
+              {t("buttons.orderNow")}
             </Button>
           </div>
 

@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 
 const DesktopNav = () => {
-  const t = useTranslations();
-  const navLinks = t.raw("header.navLinks");
+  const t = useTranslations("header");
+  const navLinks = t.raw("navLinks");
   const { isAuthenticated, loading, logout } = useAuth();
 
   return (
@@ -25,12 +25,12 @@ const DesktopNav = () => {
         <ModeToggle />
         <ChangeLangBtn />
         {!isAuthenticated && !loading ? (
-          <Link href={t("header.loginBtn.href")}>
-            <Button variant={"secondary"}>{t("header.loginBtn.label")}</Button>
+          <Link href={t("buttons.login.href")}>
+            <Button variant={"secondary"}>{t("buttons.login.label")}</Button>
           </Link>
         ) : (
           <Button variant={"outline"} onClick={() => logout()}>
-            {t("header.logoutBtn.label")}
+            {t("buttons.logout.label")}
           </Button>
         )}
       </div>

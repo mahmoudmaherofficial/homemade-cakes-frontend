@@ -1,62 +1,96 @@
 {
   "header": {
-    "changeMode": "تغيير المظهر:",
+    "changeMode": "تغيير الوضع:",
     "changeLang": "اللغة:",
-    "loginBtn": { "href": "/ar/login", "label": "تسجيل الدخول" },
-    "logoutBtn": { "label": "تسجيل الخروج" },
+
+    "buttons": {
+      "login": { "label": "تسجيل الدخول", "href": "/ar/login" },
+      "logout": { "label": "تسجيل الخروج" }
+    },
+
     "navLinks": [
       { "key": "home", "label": "الرئيسية", "href": "/" },
-      { "key": "about", "label": "عن الموقع", "href": "/about" },
-      { "key": "services", "label": "الخدمات", "href": "/services" },
-      { "key": "contact", "label": "تواصل", "href": "/contact" }
+      { "key": "about", "label": "من نحن", "href": "/about" },
+      { "key": "services", "label": "خدماتنا", "href": "/services" },
+      { "key": "contact", "label": "تواصل معنا", "href": "/contact" }
     ]
   },
+
   "HomePage": {
-    "title": "جرب <highlight>كيكاتنا!</highlight>",
-    "description": "اكتشف عالم من الحلاوة مع كيكنا الطازة، معمول بإتقان وبكل حب وشغف.",
-    "orderNow": "اطلب دلوقتي"
+    "title": "تعرف على <highlight>كعكاتنا!</highlight>",
+    "description": "اكتشف عالم من الحلاوة مع كعكاتنا الطازجة المخبوزة بحب وشغف.",
+    "buttons": {
+      "orderNow": "اطلب الآن"
+    }
   },
+
   "authPages": {
     "login": {
       "title": "تسجيل الدخول إلى حسابك",
       "description": "مرحبًا بعودتك! من فضلك أدخل بياناتك للوصول إلى حسابك.",
-      "phonePlaceholder": "أدخل رقم هاتفك",
-      "passwordPlaceholder": "أدخل كلمة المرور",
-      "phoneRequired": "الرجاء إدخال رقم الهاتف",
-      "passwordRequired": "الرجاء إدخال كلمة المرور",
-      "phoneInvalid": "الرجاء إدخال رقم الهاتف صالح",
-      "passwordInvalid": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وتحتوي على حرف كبير، حرف صغير، رقم، ورمز خاص.",
-      "invalidCredentials": "بيانات المستخدم غير صالحة. الرجاء التحقق من رقم الهاتف وكلمة المرور.",
-      "loginButton": "تسجيل الدخول",
-      "noAccount": "ليس لديك حساب؟",
-      "registerLabel": "إنشاء حساب",
-      "registerHref": "/ar/register",
-      "phoneIcon": "right-3 rotate-270",
-      "passwordIcon": "right-3",
-      "showPasswordIcon": "left-3"
+
+      "placeholders": {
+        "phone": "أدخل رقم هاتفك",
+        "password": "أدخل كلمة المرور"
+      },
+
+      "buttons": {
+        "login": "تسجيل الدخول",
+        "noAccount": "ليس لديك حساب؟",
+        "registerLabel": "إنشاء حساب جديد",
+        "registerHref": "/ar/register"
+      },
+
+      "validation": {
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "passwordRequired": "كلمة المرور مطلوبة",
+        "phoneInvalid": "رقم الهاتف غير صالح",
+        "passwordInvalid": "كلمة المرور يجب أن تكون 8 أحرف على الأقل وتحتوي على حرف كبير وحرف صغير ورقم ورمز خاص.",
+        "invalidCredentials": "رقم الهاتف أو كلمة المرور غير صحيحة"
+      },
+
+      "icons": {
+        "phone": "right-3",
+        "password": "right-3",
+        "showPassword": "left-3"
+      }
     },
+
     "register": {
-      "title": "أنشئ حساب جديد",
-      "description": "إنشاء حساب يجعلك مواكب لكل جديد لنا",
-      "usernamePlaceholder": "أدخل إسمك",
-      "phonePlaceholder": "أدخل رقم هاتفك",
-      "emailPlaceholder": "أدخل بريدك الإلكتروني",
-      "passwordPlaceholder": "أدخل كلمة المرور",
-      "registerButton": "أنشاء حساب",
-      "haveAccount": "لديك حساب بالفعل؟",
-      "loginLabel": "تسجيل الدخول",
-      "loginHref": "/ar/login",
+      "title": "إنشاء حساب جديد",
+      "description": "إنشاء حساب يجعلك على اطلاع دائم معنا",
 
-      "showPasswordIcon": "left-3",
-      "icon": "right-3",
+      "placeholders": {
+        "name": "أدخل اسمك*",
+        "phone": "أدخل رقم هاتفك*",
+        "email": "أدخل بريدك الإلكتروني",
+        "password": "أدخل كلمة المرور*"
+      },
 
-      "usernameRequired": "الرجاء إدخال الاسم",
-      "phoneRequired": "الرجاء إدخال رقم الهاتف",
-      "emailRequired": "الرجاء إدخال البريد الإلكتروني",
-      "passwordRequired": "الرجاء إدخال كلمة المرور",
-      "phoneInvalid": "الرجاء إدخال رقم هاتف صالح",
-      "emailInvalid": "الرجاء إدخال بريد إلكتروني صالح",
-      "passwordMin": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل"
+      "buttons": {
+        "register": "إنشاء حساب",
+        "haveAccount": "هل لديك حساب بالفعل؟",
+        "loginLabel": "تسجيل الدخول",
+        "loginHref": "/ar/login"
+      },
+
+      "validation": {
+        "usernameRequired": "الاسم مطلوب",
+        "phoneRequired": "رقم الهاتف مطلوب",
+        "emailRequired": "البريد الإلكتروني مطلوب",
+        "passwordRequired": "كلمة المرور مطلوبة",
+        "phoneInvalid": "رقم الهاتف غير صالح",
+        "emailInvalid": "البريد الإلكتروني غير صالح",
+        "passwordMin": "كلمة المرور يجب أن تكون 8 أحرف على الأقل"
+      },
+
+      "icons": {
+        "name": "right-3",
+        "phone": "right-3",
+        "email": "right-3",
+        "password": "right-3",
+        "showPassword": "left-3"
+      }
     }
   }
 }

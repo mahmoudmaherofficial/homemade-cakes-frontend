@@ -1,8 +1,8 @@
 "use client";
+import FormError from "@/components/ui/FormError";
 import { useAuth } from "@/context/AuthContext";
 import { LoginFormValues } from "@/types/types";
 import { useFormik } from "formik";
-import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -27,10 +27,10 @@ const LoginForm = () => {
 
   // Validation schema
   const validationSchema = Yup.object().shape({
-    phone: Yup.string().matches(phoneRegex, t("phoneInvalid")).required(t("phoneRequired")),
+    phone: Yup.string().matches(phoneRegex, t("validation.phoneInvalid")).required(t("validation.phoneRequired")),
     password: Yup.string()
       // .matches(passwordRegex, t("passwordInvalid"))
-      .required(t("passwordRequired")),
+      .required(t("validation.passwordRequired")),
   });
 
   const logApi = async (values: LoginFormValues, resetForm: () => void) => {
@@ -66,7 +66,7 @@ const LoginForm = () => {
           <svg
             fill="none"
             viewBox="0 0 24 24"
-            className={`absolute ${t("phoneIcon")} w-4 h-4 text-muted-foreground pointer-events-none`}>
+            className={`absolute ${t("icons.phone")} w-4 h-4 text-muted-foreground pointer-events-none`}>
             <path
               stroke="currentColor"
               strokeWidth="1.5"
@@ -78,7 +78,7 @@ const LoginForm = () => {
 
           <input
             required
-            placeholder={t("phonePlaceholder")}
+            placeholder={t("placeholders.phone")}
             className="w-full h-10 px-9 text-sm border rounded-lg bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:bg-background focus:ring-4 focus:ring-ring transition"
             type="text"
             name="phone"
@@ -87,17 +87,7 @@ const LoginForm = () => {
             onBlur={formik.handleBlur}
           />
         </div>
-        {formik.touched.phone && formik.errors.phone && (
-          <AnimatePresence>
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="text-error mt-2 text-sm tracking-wider">
-              {formik.errors.phone}
-            </motion.p>
-          </AnimatePresence>
-        )}
+        {formik.touched.phone && formik.errors.phone && <FormError error={formik.errors.phone} />}
       </div>
 
       {/* Password */}
@@ -105,7 +95,7 @@ const LoginForm = () => {
         <div className="relative flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`absolute ${t("passwordIcon")} w-4 h-4 text-muted-foreground pointer-events-none`}
+            className={`absolute ${t("icons.password")} w-4 h-4 text-muted-foreground pointer-events-none`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -118,7 +108,7 @@ const LoginForm = () => {
           </svg>
           <input
             required
-            placeholder={t("passwordPlaceholder")}
+            placeholder={t("placeholders.password")}
             className="w-full h-10 px-9 pr-10 text-sm border rounded-lg bg-input text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:bg-background focus:ring-4 focus:ring-ring transition"
             type={showPassword ? "text" : "password"}
             name="password"
@@ -129,7 +119,7 @@ const LoginForm = () => {
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className={`absolute ${t("showPasswordIcon")} p-1 text-muted-foreground hover:text-primary transition`}>
+            className={`absolute ${t("icons.showPassword")} p-1 text-muted-foreground hover:text-primary transition`}>
             <svg fill="none" viewBox="0 0 24 24" className="w-4 h-4">
               <path
                 strokeWidth="1.5"
@@ -139,32 +129,22 @@ const LoginForm = () => {
             </svg>
           </button>
         </div>
-        {formik.touched.password && formik.errors.password && (
-          <AnimatePresence>
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="text-error mt-2 text-sm tracking-wider">
-              {formik.errors.password}
-            </motion.p>
-          </AnimatePresence>
-        )}
+        {formik.touched.password && formik.errors.password && <FormError error={formik.errors.password} />}
       </div>
 
       {/* Submit */}
       <button
         className="relative w-full h-10 mt-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition transform hover:-translate-y-[1px] shadow-md hover:shadow-lg overflow-hidden"
         type="submit">
-        <span>{t("loginButton")}</span>
+        <span>{t("buttons.login")}</span>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
       </button>
 
       {/* Footer */}
       <div className="mt-4 text-center text-xs text-muted-foreground">
-        {t("noAccount")}{" "}
-        <Link href={t("registerHref")} className="text-primary font-medium hover:text-primary/90">
-          {t("registerLabel")}
+        {t("buttons.noAccount")}{" "}
+        <Link href={t("buttons.registerHref")} className="text-primary font-medium hover:text-primary/90">
+          {t("buttons.registerLabel")}
         </Link>
       </div>
     </form>
