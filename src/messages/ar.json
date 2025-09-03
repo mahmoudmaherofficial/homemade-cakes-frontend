@@ -1,0 +1,62 @@
+{
+  "header": {
+    "changeMode": "تغيير المظهر:",
+    "changeLang": "اللغة:",
+    "loginBtn": { "href": "/ar/login", "label": "تسجيل الدخول" },
+    "logoutBtn": { "label": "تسجيل الخروج" },
+    "navLinks": [
+      { "key": "home", "label": "الرئيسية", "href": "/" },
+      { "key": "about", "label": "عن الموقع", "href": "/about" },
+      { "key": "services", "label": "الخدمات", "href": "/services" },
+      { "key": "contact", "label": "تواصل", "href": "/contact" }
+    ]
+  },
+  "HomePage": {
+    "title": "جرب <highlight>كيكاتنا!</highlight>",
+    "description": "اكتشف عالم من الحلاوة مع كيكنا الطازة، معمول بإتقان وبكل حب وشغف.",
+    "orderNow": "اطلب دلوقتي"
+  },
+  "authPages": {
+    "login": {
+      "title": "تسجيل الدخول إلى حسابك",
+      "description": "مرحبًا بعودتك! من فضلك أدخل بياناتك للوصول إلى حسابك.",
+      "phonePlaceholder": "أدخل رقم هاتفك",
+      "passwordPlaceholder": "أدخل كلمة المرور",
+      "phoneRequired": "الرجاء إدخال رقم الهاتف",
+      "passwordRequired": "الرجاء إدخال كلمة المرور",
+      "phoneInvalid": "الرجاء إدخال رقم الهاتف صالح",
+      "passwordInvalid": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وتحتوي على حرف كبير، حرف صغير، رقم، ورمز خاص.",
+      "invalidCredentials": "بيانات المستخدم غير صالحة. الرجاء التحقق من رقم الهاتف وكلمة المرور.",
+      "loginButton": "تسجيل الدخول",
+      "noAccount": "ليس لديك حساب؟",
+      "registerLabel": "إنشاء حساب",
+      "registerHref": "/ar/register",
+      "phoneIcon": "right-3 rotate-270",
+      "passwordIcon": "right-3",
+      "showPasswordIcon": "left-3"
+    },
+    "register": {
+      "title": "أنشئ حساب جديد",
+      "description": "إنشاء حساب يجعلك مواكب لكل جديد لنا",
+      "usernamePlaceholder": "أدخل إسمك",
+      "phonePlaceholder": "أدخل رقم هاتفك",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "passwordPlaceholder": "أدخل كلمة المرور",
+      "registerButton": "أنشاء حساب",
+      "haveAccount": "لديك حساب بالفعل؟",
+      "loginLabel": "تسجيل الدخول",
+      "loginHref": "/ar/login",
+
+      "showPasswordIcon": "left-3",
+      "icon": "right-3",
+
+      "usernameRequired": "الرجاء إدخال الاسم",
+      "phoneRequired": "الرجاء إدخال رقم الهاتف",
+      "emailRequired": "الرجاء إدخال البريد الإلكتروني",
+      "passwordRequired": "الرجاء إدخال كلمة المرور",
+      "phoneInvalid": "الرجاء إدخال رقم هاتف صالح",
+      "emailInvalid": "الرجاء إدخال بريد إلكتروني صالح",
+      "passwordMin": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل"
+    }
+  }
+}

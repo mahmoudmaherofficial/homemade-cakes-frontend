@@ -1,26 +1,166 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-almarai-raw), sans-serif;
+  /* ده هيخلّي font-sans = Almarai */
+  --font-almarai: var(--font-almarai-raw), sans-serif;
+  /* utility: font-almarai */
+  --font-qwitcher: var(--font-qwitcher-raw), cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.65rem;
+  --background: oklch(100% 0 0);
+  --foreground: oklch(22% 0.01 285);
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(22% 0.01 285);
+  --popover: oklch(100% 0 0);
+  --popover-foreground: oklch(22% 0.01 285);
+
+  --primary: #f85ab0;
+  --primary-foreground: oklch(98% 0.02 0);
+
+  --secondary: oklch(65% 0.12 180);
+  --secondary-transparent: #00a69255;
+  --secondary-foreground: oklch(98% 0.02 0);
+
+  /* Accent (Light mode – برتقالي دافئ متكامل مع الوردي والأخضر) */
+  --accent: oklch(78% 0.18 60);
+  /* Base accent */
+  --accent-hover: oklch(68% 0.20 60);
+  /* Darker hover */
+  --accent-soft: oklch(94% 0.08 60);
+  /* Soft pastel */
+  --accent-foreground: oklch(22% 0.01 285);
+  /* Dark text */
+
+  --success: oklch(65% 0.2 145);
+  --warning: oklch(80% 0.18 95);
+  --error: oklch(60% 0.25 25);
+  --info: oklch(65% 0.22 240);
+
+  --muted: oklch(97% 0 0);
+  --muted-foreground: oklch(55% 0.02 285);
+
+  --border: oklch(92% 0 0);
+  --input: oklch(92% 0 0);
+  --ring: var(--primary);
+
+  --sidebar: oklch(98% 0 0);
+  --sidebar-foreground: oklch(22% 0.01 285);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--secondary);
+  --sidebar-accent-foreground: var(--secondary-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--primary);
+}
+
+.dark {
+  --background: oklch(15% 0.01 285);
+  --foreground: oklch(98% 0 0);
+
+  --card: oklch(22% 0.01 285);
+  --card-foreground: oklch(98% 0 0);
+  --popover: oklch(22% 0.01 285);
+  --popover-foreground: oklch(98% 0 0);
+
+  --primary: oklch(70% 0.21 350);
+  --primary-foreground: oklch(98% 0.02 0);
+
+  --secondary: oklch(65% 0.12 180);
+  --secondary-transparent: #00a69255;
+  --secondary-foreground: oklch(98% 0.02 0);
+
+  /* Accent (Dark mode – أفتح عشان يبان أكتر) */
+  --accent: oklch(85% 0.20 60);
+  /* Base accent brighter */
+  --accent-hover: oklch(90% 0.22 60);
+  /* Glow on hover */
+  --accent-soft: oklch(30% 0.05 60);
+  /* Dark soft bg */
+  --accent-foreground: oklch(15% 0.01 285);
+  /* Dark text */
+
+  --success: oklch(65% 0.2 145);
+  --warning: oklch(80% 0.18 95);
+  --error: oklch(60% 0.25 25);
+  --info: oklch(65% 0.22 240);
+
+  --muted: oklch(28% 0.01 285);
+  --muted-foreground: oklch(70% 0.02 285);
+
+  --border: oklch(28% 0 0);
+  --input: oklch(28% 0 0);
+  --ring: var(--primary);
+
+  --sidebar: oklch(22% 0.01 285);
+  --sidebar-foreground: oklch(98% 0 0);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--secondary);
+  --sidebar-accent-foreground: var(--secondary-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--primary);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply  !font-almarai bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility container {
+  margin: 0 auto !important;
+  padding: 0 1.5rem !important;
+
+  @media (width < 768px) {
+    padding: 0 1rem !important;
+  }
 }

@@ -1,0 +1,8 @@
+.pattern {
+  position: absolute;
+  inset: 0;
+  /* z-index: -1; */
+  background-color: #e5e5f7;
+  opacity: 0.05;
+  background: linear-gradient(135deg, var(--secondary-transparent) 25%, transparent 25%) -16px 0/ 32px 32px, linear-gradient(225deg, var(--secondary) 25%, transparent 25%) -16px 0/ 32px 32px, linear-gradient(315deg, var(--secondary-transparent) 25%, transparent 25%) 0px 0/ 32px 32px, linear-gradient(45deg, var(--secondary) 25%, transparent 25%) 0px 0/ 32px 32px;
+}

@@ -1,0 +1,62 @@
+{
+  "header": {
+    "changeMode": "Change Mode:",
+    "changeLang": "Language:",
+    "loginBtn": { "href": "/en/login", "label": "Login" },
+    "logoutBtn": { "label": "Logout" },
+    "navLinks": [
+      { "key": "home", "label": "Home", "href": "/" },
+      { "key": "about", "label": "About", "href": "/about" },
+      { "key": "services", "label": "Services", "href": "/services" },
+      { "key": "contact", "label": "Contact", "href": "/contact" }
+    ]
+  },
+  "HomePage": {
+    "title": "Meet our <highlight>cakes!</highlight>",
+    "description": "Discover a world of sweetness with our freshly baked cakes, crafted with love and passion.",
+    "orderNow": "Order Now"
+  },
+  "authPages": {
+    "login": {
+      "title": "Login to your account",
+      "description": "Welcome back! Please enter your credentials to access your account.",
+      "phonePlaceholder": "Enter your phone number",
+      "passwordPlaceholder": "Enter your password",
+      "phoneRequired": "Phone number is required",
+      "passwordRequired": "Password is required",
+      "phoneInvalid": "Invalid phone number",
+      "passwordInvalid": "Password must be at least 8 characters long and include uppercase, lowercase, a number, and a special character.",
+      "invalidCredentials": "Phone number or password is incorrect",
+      "loginButton": "Login",
+      "noAccount": "Don't have an account?",
+      "registerLabel": "Register",
+      "registerHref": "/en/register",
+      "phoneIcon": "left-3",
+      "passwordIcon": "left-3",
+      "showPasswordIcon": "right-3"
+    },
+    "register": {
+      "title": "Create new account",
+      "description": "Creating account makes you up to date with us",
+      "usernamePlaceholder": "Enter your Name*",
+      "phonePlaceholder": "Enter your phone number*",
+      "emailPlaceholder": "Enter your Email",
+      "passwordPlaceholder": "Enter your password*",
+      "registerButton": "Register",
+      "haveAccount": "Already have an account?",
+      "loginLabel": "Login",
+      "loginHref": "/en/login",
+
+      "showPasswordIcon": "right-3",
+      "icon": "left-3",
+
+      "usernameRequired": "Name is required",
+      "phoneRequired": "Phone number is required",
+      "emailRequired": "Email is required",
+      "passwordRequired": "Password is required",
+      "phoneInvalid": "Invalid phone number",
+      "emailInvalid": "Invalid email address",
+      "passwordMin": "Password must be at least 8 characters long"
+    }
+  }
+}
