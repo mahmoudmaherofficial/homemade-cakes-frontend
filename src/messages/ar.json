@@ -8,11 +8,20 @@
       "logout": { "label": "تسجيل الخروج" }
     },
 
-    "navLinks": [
+    "publicNavLinks": [
       { "key": "home", "label": "الرئيسية", "href": "/" },
       { "key": "about", "label": "من نحن", "href": "/about" },
       { "key": "services", "label": "خدماتنا", "href": "/services" },
       { "key": "contact", "label": "تواصل معنا", "href": "/contact" }
+    ],
+
+    "privateNavLinks": [
+      { "key": "home", "label": "الرئيسية", "href": "/" },
+      { "key": "profile", "label": "الملف الشخصي", "href": "/profile" },
+      { "key": "products", "label": "منتجاتنا", "href": "/products" },
+      { "key": "orders", "label": "الطلبات", "href": "/orders" },
+      { "key": "cart", "label": "عربة التسوق", "href": "/cart" },
+      { "key": "settings", "label": "الإعدادات", "href": "/settings" }
     ]
   },
 

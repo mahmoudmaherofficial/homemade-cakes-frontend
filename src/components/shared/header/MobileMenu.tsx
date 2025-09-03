@@ -10,8 +10,8 @@ import { useAuth } from "@/context/AuthContext";
 
 const MobileMenu = ({ setIsOpen }: { setIsOpen: (value: boolean) => void }) => {
   const t = useTranslations("header");
-  const navLinks = t.raw("navLinks");
   const { isAuthenticated, loading, logout } = useAuth();
+  const navLinks = isAuthenticated ? t.raw("privateNavLinks") : t.raw("publicNavLinks");
 
   return (
     <motion.div

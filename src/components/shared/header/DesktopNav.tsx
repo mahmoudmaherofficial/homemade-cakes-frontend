@@ -9,8 +9,8 @@ import { useAuth } from "@/context/AuthContext";
 
 const DesktopNav = () => {
   const t = useTranslations("header");
-  const navLinks = t.raw("navLinks");
   const { isAuthenticated, loading, logout } = useAuth();
+  const navLinks = isAuthenticated ? t.raw("privateNavLinks") : t.raw("publicNavLinks");
 
   return (
     <div className="hidden md:flex items-center gap-5">

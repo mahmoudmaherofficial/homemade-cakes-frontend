@@ -8,11 +8,20 @@
       "logout": { "label": "Logout" }
     },
 
-    "navLinks": [
+    "publicNavLinks": [
       { "key": "home", "label": "Home", "href": "/" },
       { "key": "about", "label": "About", "href": "/about" },
       { "key": "services", "label": "Services", "href": "/services" },
       { "key": "contact", "label": "Contact", "href": "/contact" }
+    ],
+
+    "privateNavLinks": [
+      { "key": "home", "label": "Home", "href": "/" },
+      { "key": "profile", "label": "Profile", "href": "/profile" },
+      { "key": "products", "label": "Our Products", "href": "/products" },
+      { "key": "orders", "label": "Orders", "href": "/orders" },
+      { "key": "cart", "label": "Cart", "href": "/cart" },
+      { "key": "settings", "label": "Settings", "href": "/settings" }
     ]
   },
 
