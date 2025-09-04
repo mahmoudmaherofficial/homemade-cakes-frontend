@@ -9,7 +9,7 @@ import { useAuth } from "@/context/AuthContext";
 
 const DesktopNav = () => {
   const t = useTranslations("header");
-  const { isAuthenticated, loading, logout } = useAuth();
+  const { isAuthenticated, loading, clearUser } = useAuth();
   const navLinks = isAuthenticated ? t.raw("privateNavLinks") : t.raw("publicNavLinks");
 
   return (
@@ -24,12 +24,12 @@ const DesktopNav = () => {
       <div className="flex items-center gap-2">
         <ModeToggle />
         <ChangeLangBtn />
-        {!isAuthenticated && !loading ? (
+        {!loading && !isAuthenticated ? (
           <Link href={t("buttons.login.href")}>
             <Button variant={"secondary"}>{t("buttons.login.label")}</Button>
           </Link>
         ) : (
-          <Button variant={"outline"} onClick={() => logout()}>
+          <Button variant={"outline"} onClick={() => clearUser()}>
             {t("buttons.logout.label")}
           </Button>
         )}

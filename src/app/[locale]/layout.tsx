@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/shared/header/header";
 import { AuthProvider } from "@/context/AuthContext";
+import { Toaster } from "react-hot-toast";
 
 const almarai = Almarai({
   subsets: ["arabic"],
@@ -17,7 +18,7 @@ const almarai = Almarai({
 const qwitcher_grypen = Qwitcher_Grypen({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-qwitcher-raw"
+  variable: "--font-qwitcher-raw",
 });
 
 export const metadata: Metadata = {
@@ -44,6 +45,7 @@ export default async function LocaleLayout({
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <AuthProvider>
               <Header />
+              <Toaster />
               {children}
             </AuthProvider>
           </ThemeProvider>

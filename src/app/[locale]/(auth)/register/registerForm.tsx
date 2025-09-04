@@ -5,14 +5,16 @@ import Link from "next/link";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import * as Yup from "yup";
-import { useRouter } from "next/navigation";
 import FormError from "@/components/ui/FormError";
+import { RegisterApi } from "@/app/api/auth";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const t = useTranslations("authPages.register");
+  const { setUser } = useAuth();
   const router = useRouter();
-  const { register } = useAuth();
 
   // Initial values
   const initialValues = {
@@ -36,9 +38,11 @@ const RegisterForm = () => {
   // Submit function
   const regApi = async (values: typeof initialValues, resetForm: () => void) => {
     try {
-      await register(values);
+      const res = await RegisterApi(values);
+      setUser(res.data.user);
+      router.replace("/");
       resetForm();
-      router.push(`${t("loginHref")}`);
+      toast.success(t("toasts.registerSuccess"));
     } catch (error) {
       console.log(error);
     }

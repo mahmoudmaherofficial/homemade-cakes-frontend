@@ -10,7 +10,7 @@ import { useAuth } from "@/context/AuthContext";
 
 const MobileMenu = ({ setIsOpen }: { setIsOpen: (value: boolean) => void }) => {
   const t = useTranslations("header");
-  const { isAuthenticated, loading, logout } = useAuth();
+  const { isAuthenticated, loading, clearUser } = useAuth();
   const navLinks = isAuthenticated ? t.raw("privateNavLinks") : t.raw("publicNavLinks");
 
   return (
@@ -48,7 +48,7 @@ const MobileMenu = ({ setIsOpen }: { setIsOpen: (value: boolean) => void }) => {
           <Button
             variant={"outline"}
             onClick={() => {
-              logout();
+              clearUser();
               setIsOpen(false);
             }}>
             {t("buttons.logout.label")}

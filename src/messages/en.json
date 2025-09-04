@@ -10,18 +10,18 @@
 
     "publicNavLinks": [
       { "key": "home", "label": "Home", "href": "/" },
-      { "key": "about", "label": "About", "href": "/about" },
-      { "key": "services", "label": "Services", "href": "/services" },
-      { "key": "contact", "label": "Contact", "href": "/contact" }
+      { "key": "about", "label": "About", "href": "/en/about" },
+      { "key": "services", "label": "Services", "href": "/en/services" },
+      { "key": "contact", "label": "Contact", "href": "/en/contact" }
     ],
 
     "privateNavLinks": [
       { "key": "home", "label": "Home", "href": "/" },
-      { "key": "profile", "label": "Profile", "href": "/profile" },
-      { "key": "products", "label": "Our Products", "href": "/products" },
-      { "key": "orders", "label": "Orders", "href": "/orders" },
-      { "key": "cart", "label": "Cart", "href": "/cart" },
-      { "key": "settings", "label": "Settings", "href": "/settings" }
+      { "key": "profile", "label": "Profile", "href": "/en/profile" },
+      { "key": "products", "label": "Our Products", "href": "/en/products" },
+      { "key": "orders", "label": "Orders", "href": "/en/orders" },
+      { "key": "cart", "label": "Cart", "href": "/en/cart" },
+      { "key": "settings", "label": "Settings", "href": "/en/settings" }
     ]
   },
 
@@ -62,6 +62,11 @@
         "phone": "left-3",
         "password": "left-3",
         "showPassword": "right-3"
+      },
+
+      "toasts": {
+        "loginSuccess": "Logged in successfully",
+        "loginError": "Login failed"
       }
     },
 
@@ -99,7 +104,19 @@
         "email": "left-3",
         "password": "left-3",
         "showPassword": "right-3"
+      },
+
+      "toasts": {
+        "registerSuccess": "Registered successfully",
+        "registerError": "Registration failed"
       }
+    }
+  },
+
+  "profilePage":{
+    "buttons":{
+      "editProfile":"Edit Profile",
+      "logout":"Logout"
     }
   }
 }

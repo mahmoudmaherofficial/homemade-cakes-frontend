@@ -1,19 +1,22 @@
 "use client";
+import { LoginApi } from "@/app/api/auth";
 import FormError from "@/components/ui/FormError";
 import { useAuth } from "@/context/AuthContext";
 import { LoginFormValues } from "@/types/types";
+import { AxiosError } from "axios";
 import { useFormik } from "formik";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import * as Yup from "yup";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const t = useTranslations("authPages.login");
+  const { setUser } = useAuth();
   const router = useRouter();
-  const { login } = useAuth();
 
   // Initial values for the form
   const initialValues = {
@@ -35,11 +38,17 @@ const LoginForm = () => {
 
   const logApi = async (values: LoginFormValues, resetForm: () => void) => {
     try {
-      await login(values);
+      const res = await LoginApi(values);
+      setUser(res.data.user);
       resetForm();
       router.replace("/");
+      toast.success(t("toasts.loginSuccess"));
     } catch (error) {
-      console.log(error);
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data?.message || t("toasts.loginError"));
+      } else {
+        toast.error(t("toasts.loginError"));
+      }
     }
   };
 

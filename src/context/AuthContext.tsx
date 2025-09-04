@@ -1,81 +1,50 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { AxiosError } from "axios";
-import { AuthContextType, LoginResponse, RegisterResponse, User } from "@/types/types";
-import cAxios from "@/lib/axios/cAxios";
+import { AuthContextType, User } from "@/types/types";
+import { LogoutApi, MeApi } from "@/app/api/auth";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUserState] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const setUser = (user: User | null) => {
+    setUserState(user);
+  };
+
+  const clearUser = async () => {
+    setUserState(null);
+    await LogoutApi();
+  };
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await cAxios.get("/auth/me");
-        setUser(res.data);
+        const res = await MeApi();
+        setUserState(res.data);
       } catch {
-        setUser(null);
+        setUserState(null);
       } finally {
         setLoading(false);
       }
     };
+
     checkAuth();
   }, []);
 
-  // ================== login ==================
-  const login = async (values: { phone: string; password: string }): Promise<LoginResponse> => {
-    try {
-      const res = await cAxios.post("/auth/login", values);
-      setUser(res.data);
-      return { success: true, data: res.data };
-    } catch (error) {
-      const err = error as AxiosError<{ message?: string }>;
-      return {
-        success: false,
-        message: err.response?.data?.message || "Login failed",
-      };
-    }
-  };
-
-  // ================== register ==================
-  const register = async (values: {
-    name: string;
-    phone: string;
-    email: string;
-    password: string;
-  }): Promise<RegisterResponse> => {
-    try {
-      const res = await cAxios.post("/auth/register", values);
-      setUser(res.data);
-      return { success: true, data: res.data };
-    } catch (error) {
-      const err = error as AxiosError<{ message?: string }>;
-      return {
-        success: false,
-        message: err.response?.data?.message || "Registration failed",
-      };
-    }
-  };
-
-  // ================== logout ==================
-  const logout = async () => {
-    await cAxios.post("/auth/logout");
-    setUser(null);
-  };
+  console.log(user);
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout, isAuthenticated: !!user }}>
+    <AuthContext.Provider value={{ user, loading, setUser, clearUser, isAuthenticated: !!user }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// ================== Hook ==================
 export const useAuth = (): AuthContextType => {
-  const context = useContext(AuthContext);
-  if (!context) throw new Error("useAuth must be used within AuthProvider");
-  return context;
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error("useAuth must be used within AuthProvider");
+  return ctx;
 };

@@ -9,6 +9,18 @@ export interface LoginFormValues {
   password: string,
 }
 
+export interface RegisterFormValues {
+  name: string,
+  phone: string,
+  email: string,
+  password: string,
+}
+
+export interface AuthResponse {
+  user: User,
+  accessToken: string,
+}
+
 export interface User {
   _id: string;
   name: string;
@@ -16,31 +28,12 @@ export interface User {
   phone: string;
   address: string;
   isAdmin: boolean;
-  accessToken?: string;
-}
-
-export interface LoginResponse {
-  success: boolean;
-  data?: User;
-  message?: string;
-}
-
-export interface RegisterResponse {
-  success: boolean;
-  data?: User;
-  message?: string;
 }
 
 export interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (values: { phone: string; password: string }) => Promise<LoginResponse>;
-  register: (values: {
-    name: string;
-    phone: string;
-    email: string;
-    password: string;
-  }) => Promise<RegisterResponse>;
-  logout: () => Promise<void>;
+  setUser: (user: User | null) => void;
+  clearUser: () => void;
   isAuthenticated: boolean;
 }

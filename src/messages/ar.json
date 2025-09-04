@@ -10,18 +10,18 @@
 
     "publicNavLinks": [
       { "key": "home", "label": "الرئيسية", "href": "/" },
-      { "key": "about", "label": "من نحن", "href": "/about" },
-      { "key": "services", "label": "خدماتنا", "href": "/services" },
-      { "key": "contact", "label": "تواصل معنا", "href": "/contact" }
+      { "key": "about", "label": "من نحن", "href": "/ar/about" },
+      { "key": "services", "label": "خدماتنا", "href": "/ar/services" },
+      { "key": "contact", "label": "تواصل معنا", "href": "/ar/contact" }
     ],
 
     "privateNavLinks": [
       { "key": "home", "label": "الرئيسية", "href": "/" },
-      { "key": "profile", "label": "الملف الشخصي", "href": "/profile" },
-      { "key": "products", "label": "منتجاتنا", "href": "/products" },
-      { "key": "orders", "label": "الطلبات", "href": "/orders" },
-      { "key": "cart", "label": "عربة التسوق", "href": "/cart" },
-      { "key": "settings", "label": "الإعدادات", "href": "/settings" }
+      { "key": "profile", "label": "الملف الشخصي", "href": "/ar/profile" },
+      { "key": "products", "label": "منتجاتنا", "href": "/ar/products" },
+      { "key": "orders", "label": "الطلبات", "href": "/ar/orders" },
+      { "key": "cart", "label": "عربة التسوق", "href": "/ar/cart" },
+      { "key": "settings", "label": "الإعدادات", "href": "/ar/settings" }
     ]
   },
 
@@ -62,6 +62,11 @@
         "phone": "right-3",
         "password": "right-3",
         "showPassword": "left-3"
+      },
+
+      "toasts": {
+        "loginSuccess": "تم تسجيل الدخول بنجاح",
+        "loginError": "خطأ في تسجيل الدخول"
       }
     },
 
@@ -99,7 +104,19 @@
         "email": "right-3",
         "password": "right-3",
         "showPassword": "left-3"
+      },
+
+      "toasts": {
+        "registerSuccess": "تم إنشاء حسابك بنجاح",
+        "registerError": "خطأ في إنشاء حسابك"
       }
+    }
+  },
+
+  "profilePage": {
+    "buttons": {
+      "editProfile": "تعديل الملف الشخصي",
+      "logout": "تسجيل الخروج"
     }
   }
 }
