@@ -1,5 +1,5 @@
 "use client";
-import { LoginApi } from "@/app/api/auth";
+import { LoginApi } from "@/api/auth";
 import FormError from "@/components/ui/FormError";
 import { useAuth } from "@/context/AuthContext";
 import { LoginFormValues } from "@/types/types";

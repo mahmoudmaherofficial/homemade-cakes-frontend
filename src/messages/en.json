@@ -30,6 +30,28 @@
     "description": "Discover a world of sweetness with our freshly baked cakes, crafted with love and passion.",
     "buttons": {
       "orderNow": "Order Now"
+    },
+    "features": {
+      "title": "Why Choose Us?",
+      "fresh": "Always fresh and baked daily with care.",
+      "quality": "Premium ingredients for the best taste.",
+      "delivery": "Fast and reliable delivery to your door."
+    },
+    "gallery": {
+      "title": "Our Delicious Creations"
+    },
+    "testimonials": {
+      "title": "What Our Customers Say",
+      "1": "The best cakes I’ve ever had! Fresh and tasty.",
+      "2": "Great service and amazing flavors. Highly recommend!",
+      "3": "I ordered for my birthday and it was perfect."
+    },
+    "cta": {
+      "title": "Ready to Taste Happiness?",
+      "subtitle": "Order now and enjoy the sweetness delivered to your home."
+    },
+    "footer": {
+      "rights": "All rights reserved."
     }
   },
 
@@ -113,10 +135,10 @@
     }
   },
 
-  "profilePage":{
-    "buttons":{
-      "editProfile":"Edit Profile",
-      "logout":"Logout"
+  "profilePage": {
+    "buttons": {
+      "editProfile": { "label": "Edit Profile", "href": "/en/profile/edit" },
+      "logout": "Logout"
     }
   }
 }

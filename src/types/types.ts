@@ -37,3 +37,26 @@ export interface AuthContextType {
   clearUser: () => void;
   isAuthenticated: boolean;
 }
+
+export interface InputFormValues {
+  name: string;
+  email: string;
+  phone: string;
+}
+
+export interface InputFieldProps {
+  name: keyof InputFormValues;
+  label: string;
+  type?: string;
+  placeholder?: string;
+}
+
+export interface TextareaFormValues {
+  address: string | null;
+}
+
+export interface TextAreaFieldProps {
+  name: keyof TextareaFormValues;
+  label: string;
+  placeholder?: string;
+}

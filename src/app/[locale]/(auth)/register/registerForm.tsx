@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import * as Yup from "yup";
 import FormError from "@/components/ui/FormError";
-import { RegisterApi } from "@/app/api/auth";
+import { RegisterApi } from "@/api/auth";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 

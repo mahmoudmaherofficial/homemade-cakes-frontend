@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { AuthContextType, User } from "@/types/types";
-import { LogoutApi, MeApi } from "@/app/api/auth";
+import { LogoutApi, MeApi } from "@/api/auth";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const clearUser = async () => {
     setUserState(null);
     await LogoutApi();
+    window.location.href = "/";
   };
 
   useEffect(() => {

@@ -5,12 +5,14 @@ import { AnimatePresence } from "framer-motion";
 import Logo from "../../ui/Logo";
 import DesktopNav from "./DesktopNav";
 import MobileMenu from "./MobileMenu";
-import { Menu, X } from "lucide-react";
+import {  Menu, X } from "lucide-react";
 import { useScroll } from "@/hooks/useScroll";
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const scrolled = useScroll(20);
+
 
   return (
     <nav

@@ -4,10 +4,18 @@ import { Button } from "@/components/ui/button";
 import PatternBG from "@/components/ui/pattern-bg/PatternBG";
 import { useAuth } from "@/context/AuthContext";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function ProfilePage() {
   const { user, clearUser } = useAuth();
   const t = useTranslations("profilePage");
+  const router = useRouter();
+
+  const handleLogout = () => {
+    clearUser();
+    router.push("/");
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-6">
@@ -38,10 +46,12 @@ export default function ProfilePage() {
 
             {/* Buttons */}
             <div className="mt-6 flex gap-3">
-              <Button variant={"secondary"} size={"lg"}>
-                {t("buttons.editProfile")}
-              </Button>
-              <Button variant={"outline"} size={"lg"} onClick={() => clearUser()}>
+              <Link href={t("buttons.editProfile.href")}>
+                <Button variant={"secondary"} size={"lg"}>
+                  {t("buttons.editProfile.label")}
+                </Button>
+              </Link>
+              <Button variant={"outline"} size={"lg"} onClick={handleLogout}>
                 {t("buttons.logout")}
               </Button>
             </div>

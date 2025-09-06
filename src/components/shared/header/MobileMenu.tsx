@@ -46,7 +46,7 @@ const MobileMenu = ({ setIsOpen }: { setIsOpen: (value: boolean) => void }) => {
           </Link>
         ) : (
           <Button
-            variant={"outline"}
+            variant={"destructive"}
             onClick={() => {
               clearUser();
               setIsOpen(false);
