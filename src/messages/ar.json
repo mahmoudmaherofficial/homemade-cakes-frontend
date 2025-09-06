@@ -60,6 +60,11 @@
       "title": "تسجيل الدخول إلى حسابك",
       "description": "مرحبًا بعودتك! من فضلك أدخل بياناتك للوصول إلى حسابك.",
 
+      "labels": {
+        "phone": "رقم الهاتف",
+        "password": "كلمة المرور"
+      },
+
       "placeholders": {
         "phone": "أدخل رقم هاتفك",
         "password": "أدخل كلمة المرور"
@@ -67,6 +72,7 @@
 
       "buttons": {
         "login": "تسجيل الدخول",
+        "loading": "جاري تسجيل الدخول...",
         "noAccount": "ليس لديك حساب؟",
         "registerLabel": "إنشاء حساب جديد",
         "registerHref": "/ar/register"

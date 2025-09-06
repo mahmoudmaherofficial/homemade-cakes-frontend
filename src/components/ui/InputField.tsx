@@ -4,7 +4,14 @@ import { useFormikContext } from "formik";
 import FormError from "@/components/ui/FormError";
 import type { InputFormValues as FormValues, InputFieldProps } from "@/types/types";
 
-export default function InputField({ name, label, type = "text", placeholder }: InputFieldProps) {
+export default function InputField({
+  name,
+  label,
+  type = "text",
+  placeholder,
+  disabled = false,
+  required = false,
+}: InputFieldProps) {
   const { values, errors, touched, handleChange, handleBlur } = useFormikContext<FormValues>();
 
   return (
@@ -16,6 +23,8 @@ export default function InputField({ name, label, type = "text", placeholder }: 
         id={name}
         type={type}
         name={name}
+        disabled={disabled}
+        required={required}
         className="w-full h-10 px-3 rounded-lg border bg-input text-foreground 
           placeholder:text-muted-foreground focus:outline-none focus:border-primary 
           focus:bg-background focus:ring-4 focus:ring-ring transition"

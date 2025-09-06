@@ -42,6 +42,7 @@ export interface InputFormValues {
   name: string;
   email: string;
   phone: string;
+  password: string;
 }
 
 export interface InputFieldProps {
@@ -49,6 +50,8 @@ export interface InputFieldProps {
   label: string;
   type?: string;
   placeholder?: string;
+  disabled?: boolean;
+  required?: boolean;
 }
 
 export interface TextareaFormValues {

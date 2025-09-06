@@ -60,13 +60,19 @@
       "title": "Login to your account",
       "description": "Welcome back! Please enter your credentials to access your account.",
 
+      "labels": {
+        "phone": "Phone Number",
+        "password": "Password"
+      },
+
       "placeholders": {
-        "phone": "Enter your phone number",
-        "password": "Enter your password"
+        "phone": "e.g. 01xxxxxxxxx",
+        "password": ""
       },
 
       "buttons": {
         "login": "Login",
+        "loading": "Logging in...",
         "noAccount": "Don't have an account?",
         "registerLabel": "Register",
         "registerHref": "/en/register"
